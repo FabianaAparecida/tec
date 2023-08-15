@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Velha</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #c2e9f5;
+    }
+
+    .board {
+      display: grid;
+      grid-template-columns: repeat(3, 150px);
+      grid-template-rows: repeat(3, 150px);
+      gap: 4px;
+      margin: 20px auto;
+      justify-content: center;
+      align-items: center;
+      max-width: 500px;
+    }
+
+    .cell {
+      width: 150px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      background-color: #f2f2f2;
+      cursor: pointer;
+    }
+
+    button {
+    padding: 10px 20px;
+    background-color: #030f47;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    width: 100%;
+}
+
+
+  </style>
+</head>
+<body>
+  <div><button id="Paginainicial"> Voltar Página Inicial</button></div>
+  <hr>
+  <div class="card-title">
+     <h1>Jogo da velha </h1>
+  </div>
+</div>
+  <div class="board" id="board">
+    <div class="cell" onclick="placeSymbol(0, 0)"></div>
+    <div class="cell" onclick="placeSymbol(0, 1)"></div>
+    <div class="cell" onclick="placeSymbol(0, 2)"></div>
+    <div class="cell" onclick="placeSymbol(1, 0)"></div>
+    <div class="cell" onclick="placeSymbol(1, 1)"></div>
+    <div class="cell" onclick="placeSymbol(1, 2)"></div>
+    <div class="cell" onclick="placeSymbol(2, 0)"></div>
+    <div class="cell" onclick="placeSymbol(2, 1)"></div>
+    <div class="cell" onclick="placeSymbol(2, 2)"></div>
+  </div>
+
+  <script>
+    const board = [
+      ['', '', ''],
+      ['', '', ''],
+      ['', '', '']
+    ];
+
+    let currentPlayer = 'X';
+    const cells = document.querySelectorAll('.cell');
+
+    function checkWinner() {
+      const winPatterns = [
+        [[0, 0], [0, 1], [0, 2]],
+        [[1, 0], [1, 1], [1, 2]],
+        [[2, 0], [2, 1], [2, 2]],
+        [[0, 0], [1, 0], [2, 0]],
+        [[0, 1], [1, 1], [2, 1]],
+        [[0, 2], [1, 2], [2, 2]],
+        [[0, 0], [1, 1], [2, 2]],
+        [[0, 2], [1, 1], [2, 0]]
+      ];
+
+      for (const pattern of winPatterns) {
+        const [a, b, c] = pattern;
+        if (
+          board[a[0]][a[1]] === currentPlayer &&
+          board[b[0]][b[1]] === currentPlayer &&
+          board[c[0]][c[1]] === currentPlayer
+        ) {
+          return true;
+        }
+      }
+
+      return false;
+    }
+
+    function checkDraw() {
+      return board.flat().every(cell => cell !== '');
+    }
+
+    function resetBoard() {
+      for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+          board[i][j] = '';
+          cells[i * 3 + j].textContent = '';
+        }
+      }
+    }
+
+    function placeSymbol(row, col) {
+      if (board[row][col] === '' && !checkWinner()) {
+        board[row][col] = currentPlayer;
+        cells[row * 3 + col].textContent = currentPlayer;
+
+        if (checkWinner()) {
+          alert(`O jogador ${currentPlayer} venceu!`);
+        } else if (checkDraw()) {
+          alert("O jogo terminou em empate!");
+        } else {
+          currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        }
+      }
+    }
+
+    // script.js
+    document.getElementById("Paginainicial").addEventListener("click", function() {
+        window.history.back();
+    });
+    </script>
+
+</body>
+</html>

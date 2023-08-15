@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <style>.container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+      
+      .container {
+        display: block;
+        position: relative;
+        cursor: pointer;
+        user-select: none;
+      }
+      
+      svg {
+        position: relative;
+        top: 10;
+        left: 10;
+        height: 400px;
+        width: 400px;
+        transition: all 0.3s;
+        fill: #888686;
+      
+      }
+      
+      svg:hover {
+        transform: scale(1.1) rotate(-10deg);
+      }
+      
+      .container input:checked ~ svg {
+        fill: #2196F3;
+      }
+
+      .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    background-color: #051d4d;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Espaço entre o SVG e o botão */
+}
+
+svg {
+    width: 300px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+    fill: #888686;
+}
+
+.pdf-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #003366;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.pdf-button:hover {
+    background-color: #002855;
+}
+button {
+    padding: 10px 20px;
+    background-color: #030f47;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    width: 100%;
+  }
+
+  
+      </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prática</title>
+</head>
+<body>
+  <button id="Paginainicial"> Voltar Página Inicial</button><p></p>
+    <label class="container">
+        <input type="checkbox">
+        <svg id="Glyph" version="1.1" viewBox="0 0 32 32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <path d="M29.845,17.099l-2.489,8.725C26.989,27.105,25.804,28,24.473,28H11c-0.553,0-1-0.448-1-1V13  c0-0.215,0.069-0.425,0.198-0.597l5.392-7.24C16.188,4.414,17.05,4,17.974,4C19.643,4,21,5.357,21,7.026V12h5.002  c1.265,0,2.427,0.579,3.188,1.589C29.954,14.601,30.192,15.88,29.845,17.099z" id="XMLID_254_"></path><path d="M7,12H3c-0.553,0-1,0.448-1,1v14c0,0.552,0.447,1,1,1h4c0.553,0,1-0.448,1-1V13C8,12.448,7.553,12,7,12z   M5,25.5c-0.828,0-1.5-0.672-1.5-1.5c0-0.828,0.672-1.5,1.5-1.5c0.828,0,1.5,0.672,1.5,1.5C6.5,24.828,5.828,25.5,5,25.5z" id="XMLID_256_"></path></svg>
+      </label>
+
+      <h1>Prática</h1>
+      <p>Criando o Joinha &#128077; ,&rarr;</p>
+      <p> Deixa seu like! &#x1F44D;</p>
+      <div class="button-container">
+        <a href="HTML, CSS e SVG .pdf" target="_blank" class="pdf-button">Link para prática PDF</a>
+    </div>
+    
+    <script>// script.js
+      document.getElementById("Paginainicial").addEventListener("click", function() {
+          window.history.back();
+      });
+      </script>
+</body>
+</html>
